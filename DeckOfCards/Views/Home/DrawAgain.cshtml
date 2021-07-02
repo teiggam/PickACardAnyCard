@@ -1,0 +1,32 @@
+﻿@model DeckOfCards.Models.Draw
+    <div style="padding-left: 25%; padding-right: 25%">
+        <h3>These are your cards!</h3>
+        <div class="row">
+            @foreach (Card c in Model.cards)
+            {
+                <div class="column">
+                    <img src="@c.image" width="100px" style="padding: 4px" /><br />
+                    <center>
+                        @c.value <br />of<br /> @c.suit
+                    </center>
+                </div>
+            }
+
+        </div>
+        <br />
+        <p>Cards remaining: @Model.remaining</p>
+        <br />
+        <h4>Draw again?</h4>
+        <div>
+            <form action="DrawAgain">
+                <input type="hidden" name="Id" value="@Model.deck_id" />
+                <input type="submit" value="Same deck, new cards!" />
+            </form>
+        </div>
+        <div>
+            <form action="DrawAgain">
+                <input type="hidden" name="Id" value="new" />
+                <input type="submit" value="New deck, new cards!" />
+            </form>
+        </div>
+    </div>
